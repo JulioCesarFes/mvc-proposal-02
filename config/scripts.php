@@ -1,0 +1,3 @@
+<?php Scripts::mainScripts([
+	'application',
+]);

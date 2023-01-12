@@ -1,5 +1,5 @@
 <?php spl_autoload_register(function ($className) {
-	
+
 	if (file_exists("controllers/$className.php")) {
 		require_once "controllers/$className.php";
 		

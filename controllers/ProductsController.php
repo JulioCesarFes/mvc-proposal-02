@@ -3,10 +3,12 @@
 	static $views_folder = 'products';
 
 	function index () {
+		$products = Product::all();
 		self::render('index', get_defined_vars());
 	}
 	
 	function show ($id) {
+		$product = Product::find($id);
 		self::render('show', get_defined_vars());
 	}
 	
@@ -21,7 +23,7 @@
 	
 	function edit ($id) {
 		$product = Product::find($id);
-		self::redirect('/produtos');
+		self::render('edit', get_defined_vars());
 	}
 	
 	function update ($id) {

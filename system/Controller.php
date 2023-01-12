@@ -3,25 +3,17 @@
 	static function partial ($filepath, $arguments) {
 		extract($arguments);
 
-		require_once 'views' . static::$views_folder . '/' . $filepath . '.php';
+		require_once 'views/' . static::$views_folder . '/' . $filepath . '.php';
 	}
 
 
-	static private $filepath;
-	static private $arguments;
 
 	static function render ($filepath, $arguments) {
+		$class = static::class;
 
-		self::$filepath = $filepath;
-		self::$arguments = $arguments;
+		$content = fn() => $class::partial($filepath, $arguments);
 
-		require_once 'templates' . self::$getTemplate() . '.php';
-	}
-
-
-
-	static function yield() {
-		self::partial(self::$filepath, self::$arguments);
+		require_once 'templates/' . self::getTemplate() . '.php';
 	}
 
 
@@ -33,9 +25,8 @@
 
 
 	static function getTemplate () {
-		if (!static::$template) return 'application';
-
-		return static::$template;
+		if (isset(static::$template)) return static::$template;
+		return 'application';
 	}
 
 }

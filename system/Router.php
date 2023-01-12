@@ -10,7 +10,7 @@
 
 		if (!is_subclass_of($controller, 'Controller')) return false;
 
-		if (!method_exists($method, $controller)) return false;
+		if (!method_exists($controller, $method)) return false;
 
 		if ($this->isCurrentRoute($route, $http_method)) {
 
@@ -51,6 +51,8 @@
 
 
 	function callControllerAndMethod ($controller, $method, $params) {
+
+		Scripts::setControllerAndMethod($controller, $method);
 
 		$controller = new $controller();
 		$controller->$method(...$params);

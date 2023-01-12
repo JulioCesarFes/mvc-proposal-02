@@ -7,3 +7,5 @@ $router->register('/criar-produto', 'post', 'ProductsController', 'create');
 $router->register('/apagar-produto/:id', 'get', 'ProductsController', 'destroy');
 $router->register('/editar-produto/:id', 'get', 'ProductsController', 'edit');
 $router->register('/editar-produto/:id', 'post', 'ProductsController', 'update');
+$router->register('/visualizar-produto/:id', 'get', 'ProductsController', 'show');
+
